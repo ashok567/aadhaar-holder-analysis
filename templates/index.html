@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>India Map</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+    .states{
+      fill: #fff;
+      stroke: #000;
+    }
+
+    .states :hover {
+      fill: blue;
+    }
+
+    /* .state-borders {
+      fill: none;
+      stroke: #000;
+      stroke-width: 0.5px;
+    } */
+    </style>
+  </head>
+  
+<body>
+  <div id="chart"></div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="js/d3.geo.min.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
+  <script>
+    $('body')    
+    .tooltip({selector: '[title],[data-title],[data-original-title]', container: 'body', html: true, animated: 'fade'})
+
+    var w = 600;
+    var h = 850;
+    var proj = d3.geo.mercator()
+    .scale(6700)
+    .translate([-1240, 750]);
+
+    var path = d3.geo.path().projection(proj);
+
+    var svg = d3.select("#chart")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+
+    var map = svg.append("g").attr("class", "states")
+
+    var colorRamp = ['#ebebff','#1414ff']; 
+    
+    var color = d3.scaleLinear()
+    .domain([0, 200000000])
+    .range(colorRamp);
+
+    d3.queue()
+      .defer(d3.json, "data/india.json")
+      .defer(d3.csv, "data/aadhaar_data.csv")
+      .await(ready);
+
+    function ready(error, data1, data2){
+      console.log(data2)
+    
+      map.selectAll("path")
+      .data(topojson.feature(data1, data1.objects.polygons).features)
+      .enter().append("path")
+      // .style("fill", function(d) { console.log(color(d.properties.st_nm)); return color(d.properties.st_nm)})
+      .attr("d", path)
+      .attr('data-placement', 'right')
+      .attr('data-toggle', 'popover')
+      .attr('data-title', function(d){
+        return d.properties.st_nm
+      });
+
+      // svg.append("path")
+      // .attr("class", "state-borders")
+      // .attr("d", path(topojson.mesh(data1, data1.objects.polygons, function(a, b) { return a !== b; })));
+    }
+
+  </script>
+</body>
+</html>
