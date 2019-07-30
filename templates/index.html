@@ -3,7 +3,9 @@
   <head>
     <title>India Map</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <style>
+    
     .states{
       fill: #fff;
       stroke: #000;
@@ -18,19 +20,39 @@
       stroke: #000;
       stroke-width: 0.5px;
     } */
+
     </style>
   </head>
   
 <body>
-  <div id="chart"></div>
+  <div class="fluid-container">
+    <div class=row>
+      <div class='col-md-7'>
+        <div id="chart"></div>
+      </div>
+      <div class='col-md-5'>
+          <table id="aadhaar_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th class="th-sm">STATES</th>
+                <th class="th-sm">POPULATION</th>
+                <th class="th-sm">AADHAAR COUNT</th>
+              </tr>
+            </thead>
+          </table>
+      </div>
+    </div> 
+  </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="js/d3.geo.min.js"></script>
   <script src="https://d3js.org/topojson.v2.min.js"></script>
   <script>
-    $('body')    
+    $('body')
     .tooltip({selector: '[title],[data-title],[data-original-title]', container: 'body', html: true, animated: 'fade'})
 
     var w = 600;
@@ -60,7 +82,24 @@
       .await(ready);
 
     function ready(error, data1, data2){
-      console.log(data2)
+      
+      var table_data = _.map(data2, function(d){ return [d.State.trim(), d.Population, d.Aadhaar_Count] });
+
+      console.log(table_data);
+
+      $("#aadhaar_table").DataTable({
+        data: table_data,
+        // bPaginate: false,
+        // bInfo: false,  
+        pageLength: 10,
+        lengthChange: false,
+        columns: [
+          {title: "STATE NAME"},
+          {title: "POPULATION"},
+          {title: "AADHAAR COUNT"},
+        ],
+        order: false,
+      });
     
       map.selectAll("path")
       .data(topojson.feature(data1, data1.objects.polygons).features)
