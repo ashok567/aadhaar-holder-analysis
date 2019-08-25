@@ -11,8 +11,8 @@ class MainHandler(RequestHandler):
 
 class DataHandler(RequestHandler):
     def get(self):
-        data = data.read_data()
-        self.write({'response': json.loads(data)})
+        res = data.read_data()
+        self.write({'response': json.loads(res)})
 
 settings = dict(
     template_path = os.path.join(os.path.dirname(__file__),'templates'),

@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>India Map</title>
+    <title>UIDIA</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <style>
+
+    body{
+      max-height: 100%;
+      /* overflow: hidden; */
+    }
     
     .states{
-      fill: #fff;
+      /* fill: #fff; */
+      fill: blue;
       stroke: #000;
     }
 
-    .states :hover {
+    /* .states :hover {
       fill: blue;
-    }
+    } */
 
-    /* .state-borders {
+    .state-borders {
       fill: none;
       stroke: #000;
       stroke-width: 0.5px;
-    } */
+    }
 
     </style>
   </head>
   
 <body>
-  <div class="fluid-container">
+  {% set base = '.' %}
+  {% include template-navbar.html %}
+  <div class="fluid-container py-2 px-4">
     <div class=row>
       <div class='col-md-7'>
         <div id="chart"></div>
@@ -56,7 +64,7 @@
     .tooltip({selector: '[title],[data-title],[data-original-title]', container: 'body', html: true, animated: 'fade'})
 
     var w = 600;
-    var h = 850;
+    var h = 600;
     var proj = d3.geo.mercator()
     .scale(6700)
     .translate([-1240, 750]);
@@ -79,18 +87,16 @@
     d3.queue()
       .defer(d3.json, "data/india.json")
       .defer(d3.csv, "data/aadhaar_data.csv")
+      // .defer(d3.request, "/data")
       .await(ready);
 
     function ready(error, data1, data2){
-      
-      var table_data = _.map(data2, function(d){ return [d.State.trim(), d.Population, d.Aadhaar_Count] });
-
-      console.log(table_data);
+      var table_data = _.map(data2, function(d){ console.log(d); return [d.State, d.Population, d.Aadhaar_Count] });
 
       $("#aadhaar_table").DataTable({
         data: table_data,
         // bPaginate: false,
-        // bInfo: false,  
+        bInfo: false,  
         pageLength: 10,
         lengthChange: false,
         columns: [
@@ -112,9 +118,9 @@
         return d.properties.st_nm
       });
 
-      // svg.append("path")
-      // .attr("class", "state-borders")
-      // .attr("d", path(topojson.mesh(data1, data1.objects.polygons, function(a, b) { return a !== b; })));
+      svg.append("path")
+      .attr("class", "state-borders")
+      .attr("d", path(topojson.mesh(data1, data1.objects.polygons, function(a, b) { return a !== b; })));
     }
 
   </script>
