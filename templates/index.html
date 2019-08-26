@@ -11,19 +11,18 @@
     }
     
     .states{
-      /* fill: #f79147; */
-      fill: #ff9933;
+      fill: #fff;
       stroke: #000;
     }
 
-    .states :hover {
+    /* .states :hover {
       fill: #28a745;
-    }
+    } */
 
     .state-borders {
       fill: none;
       stroke: #000;
-      stroke-width: 0.5px;
+      stroke-width: 0.7px;
     }
 
   .loading-image {
@@ -61,10 +60,8 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="js/d3.geo.min.js"></script>
   <script src="https://d3js.org/topojson.v2.min.js"></script>
-  <script>
-    $('.loader').show()
-    $('body')
-    .tooltip({selector: '[title],[data-title],[data-original-title]', container: 'body', html: true, animated: 'fade'})
+  <script>    
+    $('body').tooltip({selector: '[title],[data-title],[data-original-title]', container: 'body', html: true, animated: 'fade'})
 
     var w = 600;
     var h = 600;
@@ -74,6 +71,8 @@
 
     var path = d3.geo.path().projection(proj);
 
+    var rateById = d3.map();
+
     var svg = d3.select("#chart")
     .append("svg")
     .attr("width", w)
@@ -81,51 +80,73 @@
 
     var map = svg.append("g").attr("class", "states")
 
-    var colorRamp = ['#ebebff','#1414ff']; 
-    
-    var color = d3.scaleLinear()
-    .domain([0, 200000000])
-    .range(colorRamp);
+    var colorRamp = ['#ffbf80','#e67300']; 
 
-    d3.queue()
-      .defer(d3.json, "data/india.json")
-      .defer(d3.csv, "data/aadhaar_data.csv")
-      // .defer(d3.request, "/data")
-      .await(ready);
+    $(document).ready(function(){
+      $.ajax({
+        type: 'GET',
+        url: '/data',
+        beforeSend: function(){
+          $('.loader').show()
+        },
+      })
+      .done(function(data){
 
-    function ready(error, data1, data2){
-      var table_data = _.map(data2, function(d){ console.log(d); return [d.State, d.Population, d.Aadhaar_Count] });
+        _.each(data['response'], function(d){ rateById.set(d.State, +d.Aadhaar_Count)});
+        max = _.max(_.map(data['response'], function(d){ return parseInt(d.Aadhaar_Count); }))
+        console.log(max)
+        
+        var color = d3.scaleLinear()
+        .domain([0, max])
+        .range(colorRamp);
 
-      $("#aadhaar_table").DataTable({
-        data: table_data,
-        // bPaginate: false,
-        bInfo: false,  
-        pageLength: 10,
-        lengthChange: false,
-        columns: [
-          {title: "STATE NAME"},
-          {title: "POPULATION"},
-          {title: "UIDIA COUNT"},
-        ],
-        order: false,
+        var table_data = _.map(data['response'], function(d){ return [d.State, d.Population, d.Aadhaar_Count] });
+
+        $("#aadhaar_table").DataTable({
+          data: table_data,
+          // bPaginate: false,
+          bInfo: false,  
+          pageLength: 10,
+          lengthChange: false,
+          columns: [
+            {title: "STATE NAME"},
+            {title: "POPULATION"},
+            {title: "UIDIA COUNT"},
+          ],
+          order: false,
+        })
+
+      d3.json("data/india.json", function(json){
+        map.selectAll("path")
+        .data(topojson.feature(json, json.objects.polygons).features)
+        .enter().append("path")
+        .attr("d", path)
+        .transition().duration(1000)
+        .style("fill", function(d) { return color(rateById.get(d.properties.st_nm))})
+        .attr('data-placement', 'right')
+        .attr('data-toggle', 'popover')
+        .attr('data-title', function(d){
+          return d.properties.st_nm.toUpperCase() + ' : '+ rateById.get(d.properties.st_nm)
+        })
+      
+        svg.append("path")
+          .attr("class", "state-borders")
+          .attr("d", path(topojson.mesh(json, json.objects.polygons, function(a, b) { return a !== b; })));
       });
-    
-      map.selectAll("path")
-      .data(topojson.feature(data1, data1.objects.polygons).features)
-      .enter().append("path")
-      // .style("fill", function(d) { console.log(color(d.properties.st_nm)); return color(d.properties.st_nm)})
-      .attr("d", path)
-      .attr('data-placement', 'right')
-      .attr('data-toggle', 'popover')
-      .attr('data-title', function(d){
-        return d.properties.st_nm
-      });
 
-      svg.append("path")
-      .attr("class", "state-borders")
-      .attr("d", path(topojson.mesh(data1, data1.objects.polygons, function(a, b) { return a !== b; })));
-    }
-    $('.loader').hide()
+      $('.loader').hide()
+
+      })
+      .fail(function(error){
+        console.log(error);
+      })
+    });
+
+    // d3.queue()
+    //   .defer(d3.json, "data/india.json")
+    //   // .defer(d3.csv, "data/aadhaar_data.csv")
+    //   // .defer(d3.request, "/data")
+    //   .await(ready);
   </script>
 </body>
 </html>
