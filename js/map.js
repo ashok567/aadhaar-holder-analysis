@@ -4,7 +4,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
     var h = 600;
     var proj = d3.geo.mercator()
     .scale(6700)
-    .translate([-1240, 750]);
+    .translate([-1220, 750]);
 
     var path = d3.geo.path().projection(proj);
 
@@ -42,7 +42,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
           data: table_data,
           // bPaginate: false,
           bInfo: false,  
-          pageLength: 10,
+          pageLength: 13,
           lengthChange: false,
           columns: [
             {title: "STATE NAME"},
@@ -71,6 +71,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
       });
 
       $('.loader').hide()
+      $('.card-deck').show()
 
       data = {'state':'Maharashtra'}
 

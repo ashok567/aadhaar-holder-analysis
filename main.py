@@ -4,7 +4,6 @@ import os.path
 import data
 import json
 
-
 class MainHandler(RequestHandler):
     def get(self):
         self.render("index.html")
@@ -38,9 +37,9 @@ def make_app():
 
     ],**settings)
 
-
+port = 9000
 if __name__ == '__main__':
-    print("Server is running at 9000")
+    print("Server is running at "+str(port))
     app = make_app()
-    app.listen(9000)
+    app.listen(port)
     tornado.ioloop.IOLoop.current().start()

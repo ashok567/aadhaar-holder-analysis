@@ -3,6 +3,7 @@
   <head>
     <title>UIDIA</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <style>
 
@@ -28,6 +29,10 @@
       width: 50px;
       height: 50px;
     }
+
+    .card-deck{
+      display: none;
+    }
     </style>
   </head>
   
@@ -39,12 +44,21 @@
       <img class="loading-image" src="./img/loader.gif" alt="loading..">
     </div>
     <div class=row>
-      <div class='col-md-7'>
-        <div id="chart"></div>
+      <div class='col-md-6'>
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between">
+              <h5 class="card-title my-0">Aadhaar Distribution</h5>
+            </div>
+            <div class="card-body">
+              <div id="chart"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class='col-md-5 pt-2'>
-          <table id="aadhaar_table" class="table table-bordered table-success table-striped" cellspacing="0" width="100%">
-          </table>
+      <div class='col-md-6 pl-4 pt-2'>
+        <table id="aadhaar_table" class="table table-bordered table-success table-striped" cellspacing="0" width="100%">
+        </table>
       </div>
     </div> 
   </div>
