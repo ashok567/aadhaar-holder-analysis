@@ -14,6 +14,13 @@ class DataHandler(RequestHandler):
         res = data.read_data()
         self.write({'response': json.loads(res)})
 
+class InsightsHandler(RequestHandler):
+    def post(self):
+        self.set_header("Content-Type", "text/plain")
+        state = self.get_body_argument("state")
+        res = data.get_insights(state)
+        self.write({'response': json.loads(res)})
+
 settings = dict(
     template_path = os.path.join(os.path.dirname(__file__),'templates'),
     # static_path = os.path.join(os.path.dirname(__file__),'static'),
@@ -26,6 +33,7 @@ def make_app():
     [
         (r'/', MainHandler),
         (r'/data', DataHandler),
+        (r'/insight', InsightsHandler),
         (r'/(.*)', tornado.web.StaticFileHandler, {"path": ""}),
 
     ],**settings)

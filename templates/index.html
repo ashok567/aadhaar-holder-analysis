@@ -94,7 +94,6 @@
 
         _.each(data['response'], function(d){ rateById.set(d.State, +d.Aadhaar_Count)});
         max = _.max(_.map(data['response'], function(d){ return parseInt(d.Aadhaar_Count); }))
-        console.log(max)
         
         var color = d3.scaleLinear()
         .domain([0, max])
@@ -136,6 +135,20 @@
 
       $('.loader').hide()
 
+      data = {'state':'Maharashtra'}
+
+      $.ajax({
+        type: 'POST',
+        url:  '/insight',
+        data: data,
+        dataType: 'json',
+      })
+      .done(function(res){
+        console.log(res)
+      })
+      .fail(function(error){
+        console.log(error);
+      });
       })
       .fail(function(error){
         console.log(error);
