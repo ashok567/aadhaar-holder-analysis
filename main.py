@@ -1,17 +1,20 @@
 from tornado.web import RequestHandler, Application
 import tornado.ioloop
-import os.path
+import os
 import data
 import json
+
 
 class MainHandler(RequestHandler):
     def get(self):
         self.render("index.html")
 
+
 class DataHandler(RequestHandler):
     def get(self):
         res = data.read_data()
         self.write({'response': json.loads(res)})
+
 
 class InsightsHandler(RequestHandler):
     def post(self):
@@ -20,9 +23,10 @@ class InsightsHandler(RequestHandler):
         res = data.get_insights(state)
         self.write({'response': json.loads(res)})
 
+
 settings = dict(
-    template_path = os.path.join(os.path.dirname(__file__),'templates'),
-    # static_path = os.path.join(os.path.dirname(__file__),'static'),
+    template_path=os.path.join(os.path.dirname(__file__), 'templates'),
+    # static_path=os.path.join(os.path.dirname(__file__), 'static'),
     debug=True
 )
 
@@ -34,8 +38,8 @@ def make_app():
         (r'/data', DataHandler),
         (r'/insight', InsightsHandler),
         (r'/(.*)', tornado.web.StaticFileHandler, {"path": ""}),
+    ], **settings)
 
-    ],**settings)
 
 port = 9000
 if __name__ == '__main__':

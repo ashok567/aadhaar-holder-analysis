@@ -17,7 +17,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
 
     var map = svg.append("g").attr("class", "states")
 
-    var colorRamp = ['#ffbf80','#e67300']; 
+    var colorRamp = ['#ffbf80','#e67300'];
 
     $(document).ready(function(){
       $.ajax({
@@ -31,7 +31,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
 
         _.each(data['response'], function(d){ rateById.set(d.State, +d.Aadhaar_Count)});
         max = _.max(_.map(data['response'], function(d){ return parseInt(d.Aadhaar_Count); }))
-        
+
         var color = d3.scaleLinear()
         .domain([0, max])
         .range(colorRamp);
@@ -41,7 +41,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
         $("#aadhaar_table").DataTable({
           data: table_data,
           // bPaginate: false,
-          bInfo: false,  
+          bInfo: false,
           pageLength: 13,
           lengthChange: false,
           columns: [
@@ -64,7 +64,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
         .attr('data-title', function(d){
           return d.properties.st_nm.toUpperCase() + ' : '+ rateById.get(d.properties.st_nm)
         })
-      
+
         svg.append("path")
           .attr("class", "state-borders")
           .attr("d", path(topojson.mesh(json, json.objects.polygons, function(a, b) { return a !== b; })));
