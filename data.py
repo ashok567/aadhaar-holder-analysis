@@ -26,18 +26,31 @@ def preprocess():
     df.loc[df['Age'] == 0, 'Age'] = np.NAN
     # print(len(df['State'].unique()))
     df['Gender'] = df['Gender'].map({'F': 0, 'M': 1, 'T': 2}).astype(np.int64)
-    # print(df.info())
+    print(df.columns)
     return df
 
 
 def gender_ratio(df):
-    gender_df = df.groupby('Gender').sum().reset_index()
-    m_count = gender_df[gender_df['Gender'] == 1]['Generated'][1]
-    f_count = gender_df[gender_df['Gender'] == 0]['Generated'][0]
+    m_count = df[df['Gender'] == 1]['Gender'].count()
+    f_count = df[df['Gender'] == 0]['Gender'].count()
     m_ratio = round((m_count/(m_count+f_count))*100, 2)
     f_ratio = round((f_count/(m_count+f_count))*100, 2)
-    gender_sent = '''On an average, {0}% of men and {1}% of women have been given aadhaar cards'''.format(str(m_ratio), str(f_ratio))
+    gender_sent = '''On an average, {0}% of men and {1}% of women have applied for aadhaar'''.format(str(m_ratio), str(f_ratio))
     return gender_sent
+
+
+def contact_details(df):
+    yes_df = df[df['Contact Available'] == 1]['Contact Available'].count()
+    ratio = yes_df/len(df)
+    contact_sent = '''{0} of population have provided their contact details'''.format(str(ratio))
+    return contact_sent
+
+
+def approval_count(df):
+    approved = df[df['Rejected'] == 0]['Rejected'].count()
+    ratio = (approved/len(df))*100
+    approval_sent = '''{0}% of aadhaar were approved by Goverment'''.format(str(round(ratio, 2)))
+    return approval_sent
 
 
 def get_insights(state):
@@ -46,5 +59,8 @@ def get_insights(state):
     state_df = df[df['State'] == state]
     gender_sent = gender_ratio(state_df)
     res['gender_sent'] = gender_sent
-    print(res)
+    contact_sent = contact_details(state_df)
+    res['contact_sent'] = contact_sent
+    approval_sent = approval_count(state_df)
+    res['approval_sent'] = approval_sent
     return json.dumps(res)
