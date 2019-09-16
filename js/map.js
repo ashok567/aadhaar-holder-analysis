@@ -56,6 +56,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
         map.selectAll("path")
         .data(topojson.feature(json, json.objects.polygons).features)
         .enter().append("path")
+        .on('click', function(d){ insights(d.properties.st_nm) })
         .attr("d", path)
         .transition().duration(1000)
         .style("fill", function(d) { return color(rateById.get(d.properties.st_nm))})
@@ -72,25 +73,27 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
 
       $('.loader').hide()
       $('.card-deck').show()
-
-      data = {'state':'Maharashtra'}
-
-      $.ajax({
-        type: 'POST',
-        url:  '/insight',
-        data: data,
-        dataType: 'json',
-      })
-      .done(function(res){
-        console.log(res)
-      })
-      .fail(function(error){
-        console.log(error);
-      });
       })
       .fail(function(error){
         console.log(error);
       })
+
+      function insights(state){
+        data = {'state': state}
+        $.ajax({
+          type: 'POST',
+          url:  '/insight',
+          data: data,
+          dataType: 'json',
+        })
+        .done(function(res){
+          alert(res.response['appl_sent'])
+          console.log(res.response)
+        })
+        .fail(function(error){
+          console.log(error);
+        });
+      }
     });
 
     // d3.queue()
