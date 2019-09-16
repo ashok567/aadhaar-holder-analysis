@@ -36,21 +36,21 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
         .domain([0, max])
         .range(colorRamp);
 
-        var table_data = _.map(data['response'], function(d){ return [d.State, d.Population, d.Aadhaar_Count] });
+        // var table_data = _.map(data['response'], function(d){ return [d.State, d.Population, d.Aadhaar_Count] });
 
-        $("#aadhaar_table").DataTable({
-          data: table_data,
-          // bPaginate: false,
-          bInfo: false,
-          pageLength: 13,
-          lengthChange: false,
-          columns: [
-            {title: "STATE NAME"},
-            {title: "POPULATION"},
-            {title: "UIDIA COUNT"},
-          ],
-          order: false,
-        })
+        // $("#aadhaar_table").DataTable({
+        //   data: table_data,
+        //   // bPaginate: false,
+        //   bInfo: false,
+        //   pageLength: 13,
+        //   lengthChange: false,
+        //   columns: [
+        //     {title: "STATE NAME"},
+        //     {title: "POPULATION"},
+        //     {title: "UIDIA COUNT"},
+        //   ],
+        //   order: false,
+        // })
 
       d3.json("data/india.json", function(json){
         map.selectAll("path")
