@@ -5,37 +5,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <style>
-
-    body{
-      max-height: 100%;
-    }
-    
-    .states{
-      fill: #fff;
-      stroke: #000;
-    }
-
-    .state-borders {
-      fill: none;
-      stroke: #000;
-      stroke-width: 0.7px;
-    }
-
-    .loading-image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 50px;
-      height: 50px;
-    }
-
-    .card-deck{
-      display: none;
-    }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
-  
+
 <body>
   {% set base = '.' %}
   {% include template-navbar.html %}
@@ -60,7 +32,7 @@
         <table id="aadhaar_table" class="table table-bordered table-success table-striped" cellspacing="0" width="100%">
         </table>
       </div> -->
-    </div> 
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -70,6 +42,7 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="js/d3.geo.min.js"></script>
   <script src="https://d3js.org/topojson.v2.min.js"></script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script src='./js/map.js'></script>
 </body>
 </html>

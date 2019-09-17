@@ -19,6 +19,10 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
 
     var colorRamp = ['#ffbf80','#e67300'];
 
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,hi,mr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+
     $(document).ready(function(){
       $.ajax({
         type: 'GET',
