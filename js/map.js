@@ -91,7 +91,6 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
           dataType: 'json',
         })
         .done(function(res){
-          alert(res.response['appl_sent'])
           console.log(res.response)
         })
         .fail(function(error){

@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+      #insights{
+        position: relative;
+        margin: auto;
+        margin-top: 20%;
+        width: 50%;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    </style>
   </head>
 
 <body>
@@ -32,6 +42,21 @@
         <table id="aadhaar_table" class="table table-bordered table-success table-striped" cellspacing="0" width="100%">
         </table>
       </div> -->
+      <div class='col-md-6'>
+        <div class="card-deck d-flex" id="insights">
+          <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between">
+              <h5 class="card-title my-0">Aadhaar Insights</h5>
+            </div>
+            <div class="card-body">
+              <p>Aadhaar applications percentage is 93.07%</p>
+              <p>91.76% of aadhaar were approved by UIDIA</p>
+              <p>1925/3736 of population have provided contact details</p>
+              <p>65.88% men and 34.12% women have applied for aadhaar</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
