@@ -42,17 +42,18 @@
         <table id="aadhaar_table" class="table table-bordered table-success table-striped" cellspacing="0" width="100%">
         </table>
       </div> -->
-      <div class='col-md-6'>
+      <div class='col-md-6 insights-div'>
         <div class="card-deck d-flex" id="insights">
           <div class="card">
             <div class="card-header bg-white d-flex justify-content-between">
               <h5 class="card-title my-0">Aadhaar Insights</h5>
             </div>
-            <div class="card-body">
-              <p>Aadhaar applications percentage is 93.07%</p>
-              <p>91.76% of aadhaar were approved by UIDIA</p>
-              <p>1925/3736 of population have provided contact details</p>
-              <p>65.88% men and 34.12% women have applied for aadhaar</p>
+            <div class="card-body" id="insights-pts">
+              <script id="insights-script" type="text/html">
+                <% _.each(data, function(d){ %>
+                  <p><%= d %></p>
+                <% }) %>
+              </script>
             </div>
           </div>
         </div>

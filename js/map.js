@@ -60,7 +60,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
         map.selectAll("path")
         .data(topojson.feature(json, json.objects.polygons).features)
         .enter().append("path")
-        .on('click', function(d){ insights(d.properties.st_nm) })
+        .on('click', function(d){ d3.select(this).transition().ease(d3.easeBounce); insights(d.properties.st_nm) })
         .attr("d", path)
         .transition().duration(1000)
         .style("fill", function(d) { return color(rateById.get(d.properties.st_nm))})
@@ -91,7 +91,11 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
           dataType: 'json',
         })
         .done(function(res){
-          console.log(res.response)
+          console.log(res.response);
+          // $("#insights-pts").empty();
+          var insight_tmplt = _.template($("#insights-script").html());
+          var insight_html = insight_tmplt({ data: res.response });
+          $("#insights-pts").html(insight_html);
         })
         .fail(function(error){
           console.log(error);
