@@ -19,10 +19,6 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
 
     var colorRamp = ['#ffbf80','#e67300'];
 
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,hi,mr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-    }
-
     $(document).ready(function(){
       $.ajax({
         type: 'GET',
@@ -60,7 +56,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
         map.selectAll("path")
         .data(topojson.feature(json, json.objects.polygons).features)
         .enter().append("path")
-        .on('click', function(d){ d3.select(this).transition().ease(d3.easeBounce); insights(d.properties.st_nm) })
+        .on('click', function(d){ insights(d.properties.st_nm) })
         .attr("d", path)
         .transition().duration(1000)
         .style("fill", function(d) { return color(rateById.get(d.properties.st_nm))})
@@ -75,27 +71,26 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
           .attr("d", path(topojson.mesh(json, json.objects.polygons, function(a, b) { return a !== b; })));
       });
 
-      $('.loader').hide()
-      $('.card-deck').show()
+      $('.loader').hide();
+      $('.card1').show();
       })
       .fail(function(error){
         console.log(error);
       })
 
       function insights(state){
-        data = {'state': state}
+        state_nm = {'state': state}
         $.ajax({
           type: 'POST',
           url:  '/insight',
-          data: data,
+          data: state_nm,
           dataType: 'json',
         })
         .done(function(res){
-          console.log(res.response);
-          // $("#insights-pts").empty();
-          var insight_tmplt = _.template($("#insights-script").html());
-          var insight_html = insight_tmplt({ data: res.response });
-          $("#insights-pts").html(insight_html);
+          var insight_tmplt = _.template($("#insight-script").html());
+          console.log(insight_tmplt);
+          var insight_html = insight_tmplt({ data: res.response, state: state });
+          $("#insights").html(insight_html);
         })
         .fail(function(error){
           console.log(error);
