@@ -79,16 +79,13 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
       })
 
       function insights(state){
-        state_nm = {'state': state}
         $.ajax({
-          type: 'POST',
-          url:  '/insight',
-          data: state_nm,
-          dataType: 'json',
+          type: 'GET',
+          url:  '/insight?state='+state,
         })
         .done(function(res){
+          console.log(res.response)
           var insight_tmplt = _.template($("#insight-script").html());
-          console.log(insight_tmplt);
           var insight_html = insight_tmplt({ data: res.response, state: state });
           $("#insights").html(insight_html);
         })

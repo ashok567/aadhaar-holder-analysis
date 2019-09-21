@@ -17,11 +17,16 @@ class DataHandler(RequestHandler):
 
 
 class InsightsHandler(RequestHandler):
-    def post(self):
-        self.set_header("Content-Type", "text/plain")
-        state = self.get_body_argument("state")
+    def get(self):
+        state = self.get_argument("state", "Maharashtra", True)
         res = data.get_insights(state)
         self.write({'response': json.loads(res)})
+
+    # def post(self):
+    #     self.set_header("Content-Type", "text/plain")
+    #     state = self.get_body_argument("state") #POST
+    #     res = data.get_insights(state)
+    #     self.write({'response': json.loads(res)})
 
 
 settings = dict(
