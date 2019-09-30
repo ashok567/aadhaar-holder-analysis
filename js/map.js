@@ -71,6 +71,11 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
           .attr("d", path(topojson.mesh(json, json.objects.polygons, function(a, b) { return a !== b; })));
       });
 
+      $.get('/insight', function(res){
+        var insight_html = insight_tmplt({ data: res.response, state: 'Maharashtra' });
+        $("#insights").html(insight_html);
+      })
+
       $('.loader').hide();
       $('.card1').show();
       })
@@ -79,23 +84,10 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
       })
 
       function insights(state){
-        $.ajax({
-          type: 'GET',
-          url:  '/insight?state='+state,
-        })
-        .done(function(res){
-          console.log(res.response)
+        var url = '/insight?state='+state
+        $.get(url, function(res){
           var insight_html = insight_tmplt({ data: res.response, state: state });
           $("#insights").html(insight_html);
         })
-        .fail(function(error){
-          console.log(error);
-        });
       }
     });
-
-    // d3.queue()
-    //   .defer(d3.json, "data/india.json")
-    //   // .defer(d3.csv, "data/aadhaar_data.csv")
-    //   // .defer(d3.request, "/data")
-    //   .await(ready);
