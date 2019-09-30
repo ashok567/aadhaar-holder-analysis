@@ -38,12 +38,12 @@ settings = dict(
 
 def make_app():
     return Application(
-                    [
-                        (r'/', MainHandler),
-                        (r'/data', DataHandler),
-                        (r'/insight', InsightsHandler),
-                        (r'/(.*)', tornado.web.StaticFileHandler,
-                            {"path": ""})], **settings)
+        [
+            (r'/', MainHandler),
+            (r'/data', DataHandler),
+            (r'/insight', InsightsHandler),
+            (r'/(.*)', tornado.web.StaticFileHandler,
+             {"path": ""})], **settings)
 
 
 port = 9000
