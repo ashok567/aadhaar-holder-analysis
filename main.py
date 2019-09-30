@@ -18,7 +18,7 @@ class DataHandler(RequestHandler):
 
 class InsightsHandler(RequestHandler):
     def get(self):
-        state = self.get_argument("state", "Maharashtra", True)
+        state = self.get_argument("state", "Maharashtra")
         res = data.get_insights(state)
         self.write({'response': json.loads(res)})
 
