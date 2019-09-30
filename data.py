@@ -30,12 +30,14 @@ def read_data():
 def aadhaar_ratio(state):
     df = pd.read_sql(
         "select * from state_counts where State=\'{0}\'".format(state), conn)
-    appl_ratio = (float(df['Aadhaar_Count'])/float(df['Population']))*100
+    appl_ratio = (float(df['Aadhaar_Count']) / float(df['Population']))*100
     if appl_ratio <= 100:
-        appl_sent = '''Aadhaar applications percentage of {1} is {0}%'''.format(
+        appl_sent = '''Aadhaar applications percentage of \
+            {1} is {0}%'''.format(
             str(round(appl_ratio, 2)), state)
     else:
-        appl_sent = '''Aadhaar applications percentage of {0} is exceeded more than 100%'''.format(
+        appl_sent = '''Aadhaar applications percentage of {0} is exceeded more \
+            than 100%'''.format(
             state)
     return appl_sent
 
@@ -45,14 +47,17 @@ def gender_ratio(df):
     f_count = df[df['Gender'] == 0]['Gender'].count()
     m_ratio = round((m_count/(m_count+f_count))*100, 2)
     f_ratio = round((f_count/(m_count+f_count))*100, 2)
-    gender_sent = '''{0}% men and {1}% women have applied for Aadhaar'''.format(
+    gender_sent = '''{0}% men and {1}% women have applied for \
+        Aadhaar'''.format(
         str(m_ratio), str(f_ratio))
     return gender_sent
 
 
 def contact_details(df):
-    yes_df = df[df['Contact Available'] == 1]['Contact Available'].count()
-    contact_sent = '''{0} of state population have provided contact details'''.format(
+    yes_df = df[df['Contact Available']
+                == 1]['Contact Available'].count()
+    contact_sent = '''{0} of state population have provided \
+        contact details'''.format(
         str(Fraction(yes_df, len(df))))
     return contact_sent
 

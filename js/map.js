@@ -1,5 +1,5 @@
 $('body').tooltip({selector: '[title],[data-title],[data-original-title]', container: 'body', html: true, animated: 'fade'})
-
+    var insight_tmplt = _.template($(".insight-script").html());
     var w = 600;
     var h = 600;
     var proj = d3.geo.mercator()
@@ -85,7 +85,6 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
         })
         .done(function(res){
           console.log(res.response)
-          var insight_tmplt = _.template($("#insight-script").html());
           var insight_html = insight_tmplt({ data: res.response, state: state });
           $("#insights").html(insight_html);
         })
