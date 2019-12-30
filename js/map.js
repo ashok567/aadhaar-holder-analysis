@@ -84,7 +84,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
       })
 
       function insights(state){
-        var url = '/insight?'+$.param(state)
+        var url = '/insight?state='+state
         $.get(url, function(res){
           var insight_html = insight_tmplt({ data: res.response, state: state });
           $("#insights").html(insight_html);
