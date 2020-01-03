@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="49px" viewBox="0 0 42 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>IN-SK</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.5%" y="-2.2%" width="105.1%" height="104.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="4" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="views" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.2">
+        <g id="Overall-2" transform="translate(-1136.000000, -354.000000)" fill="#FFFFFF">
+            <g id="india" filter="url(#filter-1)" transform="translate(524.000000, 29.000000)">
+                <polygon id="IN-SK" points="635.123885 328.052546 635.810901 328.916511 638.513059 328.942825 641.134121 331.072769 641.241228 333.815236 642.041471 334.109072 642.824883 336.249249 641.818076 337.791521 641.57326 342.868594 639.025642 346.439942 640.379782 351.921952 644 354.624949 643.256371 356.38504 640.116604 357.322099 639.701947 359.435962 638.53295 360.722407 638.53295 360.722407 637.662323 361.054252 636.377038 359.627467 635.481929 360.237067 634.28386 359.367254 632.360523 359.336555 631.136443 359.697637 631.430222 360.656623 628.291985 363 624.827837 362.204743 624.208146 361.393405 621.903815 361.696012 620.722577 361.133193 618.832902 361.793958 617.204875 360.951921 616.856012 358.921384 615 358.305937 615 358.305937 616.67087 354.307724 615.879808 353.103143 616.038938 351.920491 617.102358 351.193941 615.941012 348.814018 620.860286 338.686185 620.084525 337.664339 620.988814 337.076667 620.826624 336.518233 618.618688 335.553399 618.424366 333.163242 618.909407 332.729067 620.497652 333.41176 621.813539 332.575571 622.269509 333.245107 625.513322 331.832941 626.940906 332.226184 629.929193 329.898887 631.717881 330.129863 632.215164 328.545196 634.201235 327.894664 634.052815 327"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

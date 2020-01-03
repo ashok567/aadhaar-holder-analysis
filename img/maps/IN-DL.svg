@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="31px" viewBox="0 0 29 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>IN-DL</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.5%" y="-2.2%" width="105.1%" height="104.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="4" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="views" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.2">
+        <g id="Overall-2" transform="translate(-789.000000, -328.000000)" fill="#FFFFFF">
+            <g id="india" filter="url(#filter-1)" transform="translate(524.000000, 29.000000)">
+                <polygon id="IN-DL" points="278.199848 302.633531 279.168393 303.762149 278.519149 305.193237 279.402547 305.467115 281.319871 308.153227 282.546897 308.031336 282.156134 310.577498 282.951345 311.853589 281.60268 313.356909 283 315.417013 283 315.417013 279.974247 316.286802 279.435997 317.021156 279.910387 318.27317 277.527796 319 276.01644 317.790121 275.678894 315.95574 274.558301 315.01372 273.804143 315.194299 272.444835 314.211649 272.42811 315.222891 271.248218 314.754891 268.412525 315.414004 267.083626 313.704523 267 312.476587 267.630999 312.443481 268.366911 310.827299 270.147391 310.825794 269.625867 310.126051 270.805759 308.407542 270.414996 304.284323 273.25525 303.70948 274.664734 302 276.343343 302.684695 276.68241 303.533416"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="92px" height="199px" viewBox="0 0 92 199" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>IN-PY</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.5%" y="-2.2%" width="105.1%" height="104.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="4" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="views" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.2">
+        <g id="Overall-2" transform="translate(-877.000000, -737.000000)" fill="#FFFFFF">
+            <g id="india" filter="url(#filter-1)" transform="translate(524.000000, 29.000000)">
+                <path d="M361.386679,897 L360.216747,896.989603 L360.082492,895.311161 L357.54641,894.36648 L356.829402,892.65536 L358.123262,892.922723 L357.702794,891.548777 L359.293194,892.169652 L359.849391,891.575513 L361.489952,891.896348 L361.386679,897 Z M359.816934,865.665121 L359.241557,864.658056 L358.326856,865.157132 L358.254565,864.017871 L356.833828,864.72044 L355.451449,863.855969 L356.187636,862.623131 L357.192332,863.56187 L357.485921,863.039028 L356.903168,861.865604 L356.043054,861.617551 L356.687771,860.497599 L355,860.047539 L356.06961,859.006311 L356.897267,860.329755 L357.788363,859.79503 L358.34161,860.262914 L357.202659,860.643163 L357.857703,862.544407 L359.741692,860.764962 L360.969162,861.491296 L359.816934,865.665121 Z M435.704665,709.987394 L433.142027,708.857045 L434.471294,708 L434.556863,709.078362 L436.418722,708.934283 L436.82001,708.280731 L437,709.206102 L436.997049,709.216499 L435.437632,709.360578 L435.704665,709.987394 Z" id="IN-PY"></path>
+            </g>
+        </g>
+    </g>
+</svg>

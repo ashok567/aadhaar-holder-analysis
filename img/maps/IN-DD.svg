@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="24px" viewBox="0 0 21 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>IN-DD</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.5%" y="-2.2%" width="105.1%" height="104.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="4" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="views" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.2">
+        <g id="Overall-2" transform="translate(-597.000000, -596.000000)" fill="#FFFFFF">
+            <g id="india" filter="url(#filter-1)" transform="translate(524.000000, 29.000000)">
+                <polygon id="IN-DD" points="76 577.337538 76.162413 574.372823 78.0980806 569 79.0061169 570.071922 81.3227167 569.718468 82.5895381 570.65 83 572.838438 80.4250158 574.108559 82.8744991 575.07973 82.8021514 576.187988 81.9841806 576.174775 81.9812276 577.292943 81.2872812 577.312763 82.638262 579.311261 82.638262 579.311261 82.0786754 578.982583 82.1820291 579.501201 80.5933347 580 76 577.337538"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

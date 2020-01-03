@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="23px" viewBox="0 0 22 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>IN-DN</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.5%" y="-2.2%" width="105.1%" height="104.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="4" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="views" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.2">
+        <g id="Overall-2" transform="translate(-668.000000, -616.000000)" fill="#FFFFFF">
+            <g id="india" filter="url(#filter-1)" transform="translate(524.000000, 29.000000)">
+                <polygon id="IN-DN" points="155.60516 597.532816 154.603115 600 153.077239 598.878406 150.480102 598.349839 150.222119 599.471433 148.818942 597.945356 149.058048 597.068708 148.128365 597.845444 147.599814 597.218576 148.043419 595.771462 147.508576 594.30501 147.508576 594.30501 146 591.932904 146.703162 591.405948 147.958474 592.182684 148.167692 591.452681 149.157152 591.49458 149.135129 590.548638 149.937394 591.488134 150.145039 590.348813 151.475855 590.211837 152.018563 589 152.199466 590.993408 153.797704 590.556695 154.371874 591.654117 153.692308 591.510694 152.11924 593.597568 151.013373 593.679754 151.197422 596.296806 151.560801 595.677996 152.59588 596.293583 153.424887 595.716672 153.281738 594.496777 155.394369 594.840023 156 595.455611 154.935033 596.891444"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
