@@ -84,10 +84,10 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
       })
 
       function insights(state){
-        var url = '/insight?state='+state
+        var url_data = {'state': state}
+        var url = '/insight?'+$.param(url_data)
         $.get(url, function(res){
           d3.json("data/state_mapping.json", function(mapping){
-            console.log(mapping[state])
             var insight_html = insight_tmplt({ data: res.response, state: state, state_abbr: mapping[state] });
             $("#insights").html(insight_html);
           })
