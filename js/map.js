@@ -72,7 +72,7 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
       });
 
       $.get('/insight', function(res){
-        var insight_html = insight_tmplt({ data: res.response, state: 'Maharashtra' });
+        var insight_html = insight_tmplt({ data: res.response, state: 'Maharashtra', state_abbr: 'MH' });
         $("#insights").html(insight_html);
       })
 
@@ -86,8 +86,11 @@ $('body').tooltip({selector: '[title],[data-title],[data-original-title]', conta
       function insights(state){
         var url = '/insight?state='+state
         $.get(url, function(res){
-          var insight_html = insight_tmplt({ data: res.response, state: state });
-          $("#insights").html(insight_html);
+          d3.json("data/state_mapping.json", function(mapping){
+            console.log(mapping[state])
+            var insight_html = insight_tmplt({ data: res.response, state: state, state_abbr: mapping[state] });
+            $("#insights").html(insight_html);
+          })
         })
       }
     });

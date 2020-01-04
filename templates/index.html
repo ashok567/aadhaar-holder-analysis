@@ -36,13 +36,14 @@
         </table>
       </div> -->
       <div class='col-md-6'>
-        <div class="card-deck d-flex" id="insights">
+        <div class="card-deck" id="insights">
           <script class="insight-script" type="text/html">
           <div class="card">
-            <div class="card-header bg-success text-white d-flex justify-content-between">
+            <div class="card-header bg-success text-white">
               <h5 class="card-title my-0"><%= state%> Insights</h5>
             </div>
-            <div class="card-body">
+          <div class="card-body bg-success text-white">
+              <img id="state-pic" src="./img/maps/IN-<%= state_abbr%>.svg">
               <ul>
                 <% _.each(data, function(d){ %>
                   <li><%= d %></li>
