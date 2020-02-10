@@ -6,8 +6,7 @@ from fractions import Fraction
 
 
 conn = sqlite3.connect('data/aadhaar_stats.db')
-
-dataset = pd.read_csv('data/analysis.csv')
+dataset = pd.read_csv('data/analysis.csv', low_memory=False)
 dataset.rename(columns={'Aadhaar generated': 'Generated',
                         'Enrolment Rejected': 'Rejected',
                         'Residents providing email': 'Email Available',
